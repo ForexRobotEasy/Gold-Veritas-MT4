@@ -1,0 +1,111 @@
+
+//+------------------------------------------------------------------+
+//|                                              Gold Veritas MT4   |
+//|                                       Developed by Forex Robot Easy Team |
+//|                                                    forexroboteasy.com |
+//+------------------------------------------------------------------+
+
+// define constants for currency pairs
+#define XAUUSD 0
+#define XAUJPY 1
+#define XAUAUD 2
+#define XAUEUR 3
+
+// define variables for trading style and risk tolerance
+int tradingStyle;
+double riskTolerance;
+
+//+------------------------------------------------------------------+
+//|                        Expert Advisor start function                       |
+//+------------------------------------------------------------------+
+int start()
+{
+   // check if it is quiet trading hours
+   if(IsQuietTradingHours())
+   {
+      // check if the trading style is set to 1
+      if(tradingStyle == 1)
+      {
+         // execute trading strategy for XAUUSD
+         TradeXAUUSD();
+      }
+      // check if the trading style is set to 2
+      else if(tradingStyle == 2)
+      {
+         // execute trading strategy for XAUJPY
+         TradeXAUJPY();
+      }
+      // check if the trading style is set to 3
+      else if(tradingStyle == 3)
+      {
+         // execute trading strategy for XAUAUD
+         TradeXAUAUD();
+      }
+      // check if the trading style is set to 4
+      else if(tradingStyle == 4)
+      {
+         // execute trading strategy for XAUEUR
+         TradeXAUEUR();
+      }
+   }
+   
+   return 0;
+}
+
+//+------------------------------------------------------------------+
+//|               Check if it is quiet trading hours function            |
+//+------------------------------------------------------------------+
+bool IsQuietTradingHours()
+{
+   // implement logic to check if it is quiet trading hours
+   // return true if it is quiet trading hours, false otherwise
+   return true;
+}
+
+//+------------------------------------------------------------------+
+//|                  Execute trading strategy for XAUUSD                |
+//+------------------------------------------------------------------+
+void TradeXAUUSD()
+{
+   // implement trading strategy for XAUUSD
+   // execute necessary trading functions
+   
+   // example: open buy order
+   OrderSend(Symbol(), OP_BUY, 0.01, Ask, 10, 0, 0, 'Gold Veritas', 0, 0, Green);
+}
+
+//+------------------------------------------------------------------+
+//|                  Execute trading strategy for XAUJPY                |
+//+------------------------------------------------------------------+
+void TradeXAUJPY()
+{
+   // implement trading strategy for XAUJPY
+   // execute necessary trading functions
+   
+   // example: open sell order
+   OrderSend(Symbol(), OP_SELL, 0.01, Bid, 10, 0, 0, 'Gold Veritas', 0, 0, Red);
+}
+
+//+------------------------------------------------------------------+
+//|                  Execute trading strategy for XAUAUD                |
+//+------------------------------------------------------------------+
+void TradeXAUAUD()
+{
+   // implement trading strategy for XAUAUD
+   // execute necessary trading functions
+   
+   // example: close all open orders
+   OrderCloseAll();
+}
+
+//+------------------------------------------------------------------+
+//|                  Execute trading strategy for XAUEUR                |
+//+------------------------------------------------------------------+
+void TradeXAUEUR()
+{
+   // implement trading strategy for XAUEUR
+   // execute necessary trading functions
+   
+   // example: modify stop loss of open orders
+   OrderModify(0, OrderStopLoss(), NormalizeDouble(Bid - 100 * Point, Digits));
+}
